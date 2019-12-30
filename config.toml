@@ -1,0 +1,43 @@
+baseURL = "http://www.fourthcornersolutions.com/"
+languageCode = "en-us"
+title = "Marcel Penton (CISSP)"
+theme = "vitae"
+
+[params]
+	subtitle = "I'm a security professional who is passionate about keeping data safe and helping others make informed business decisions. This is a new website I will be updating soon."
+
+[deployment]
+# By default, files are uploaded in an arbitrary order.
+# Files that match the regular expressions in the "Order" list
+# will be uploaded first, in the listed order.
+	order = [".jpg$", ".gif$"]
+
+[[deployment.targets]]
+# An arbitrary name for this target.
+	name = "mydeployment"
+# The Go Cloud Development Kit URL to deploy to. Examples:
+# GCS; see https://gocloud.dev/howto/blob/#gcs
+	URL = "gs://www.fourthcornersolutions.com"
+
+# If you are using a CloudFront CDN, deploy will invalidate the cache as needed.
+# cloudFrontDistributionID = <ID>
+
+# ... add more [[deployment.targets]] sections ...
+
+# [[deployment.matchers]] configure behavior for files that match the Pattern.
+# Samples:
+
+[[deployment.matchers]]
+#  Cache static assets for 1 year.
+	pattern = "^.+\\.(js|css|svg|ttf)$"
+	cacheControl = "max-age=31536000, no-transform, public"
+	gzip = true
+
+[[deployment.matchers]]
+	pattern = "^.+\\.(png|jpg)$"
+	cacheControl = "max-age=31536000, no-transform, public"
+	gzip = false
+
+[[deployment.matchers]]
+	pattern = "^.+\\.(html|xml|json)$"
+	gzip = true
